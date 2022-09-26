@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FlipCharacter : MonoBehaviour
 {
-    [SerializeField] GameObject GameObject;
+    [SerializeField] private GameObject _character;
 
     private bool _isFacingRight = true;
     private float _previousPositionX;
@@ -14,12 +15,12 @@ public class FlipCharacter : MonoBehaviour
 
     private void Update()
     {
-        if (GameObject.transform.position.x > _previousPositionX && !_isFacingRight)
+        if (_character.transform.position.x > _previousPositionX && !_isFacingRight)
         {
             Flip();
         }
 
-        if (GameObject.transform.position.x < _previousPositionX && _isFacingRight)
+        if (_character.transform.position.x < _previousPositionX && _isFacingRight)
         {
             Flip();
         }
