@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 _source.Play();
                 Attacked?.Invoke();
-                StartCoroutine(Hit());
+                Hit();
             }
 
             Invoke(nameof(AttackComplete), _attackDelay);
@@ -40,11 +40,10 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackComplete()
     {
-        StopCoroutine(Hit());
         _isAttacking = false;
     }
 
-    private IEnumerator Hit()
+    private void Hit()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_hitPoint.position, _hitRange);
 
@@ -55,7 +54,5 @@ public class PlayerAttack : MonoBehaviour
                 target.TakeDamage(_damage);
             }
         }
-
-        yield return null;
     }
 }
