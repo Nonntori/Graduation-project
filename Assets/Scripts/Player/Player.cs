@@ -5,18 +5,18 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
 
+    private int _coinCount = 0;
+    private int _countCoinsToWin = 28;
+    private int _currentHeath = 100;
+
+    public int Health => _health;
+    
     public event UnityAction<int,int> ChangingHealth;
     public event UnityAction<int> CoinCollected;
     public event UnityAction Died;
     public event UnityAction RaisedObject;
     public event UnityAction Damaged;
     public event UnityAction Won;
-    
-    public int Health => _health;
-
-    private int _coinCount = 0;
-    private int _countCoinsToWin = 28;
-    private int _currentHeath = 100;
 
     private void Start()
     {
