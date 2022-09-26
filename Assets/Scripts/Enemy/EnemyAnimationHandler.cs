@@ -1,16 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator), typeof(StatePatrol), typeof(StateAttack))]
 public class EnemyAnimationHandler : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
     [SerializeField] private GameObject _hitParticle;
+    [SerializeField] private Color _damageСolor;
     
     private StatePatrol _statePatrol;
     private StateAttack _stateAttack;
     private float _damageDelay = 0.5f;
     private Animator _animator;
     private SpriteRenderer _spriteEnemy;
+    private Color _defaulColorSprite = new Color(1f, 1f, 1f, 1f);
 
     private void Awake()
     {
@@ -48,14 +51,14 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     private void OnDamaged()
     {
-        _spriteEnemy.color = new Color(1f, 0.4f, 0.4f, 1f);
+        _spriteEnemy.color = _damageСolor;
         Instantiate(_hitParticle, transform.position, Quaternion.identity);
         Invoke(nameof(DamageComplete), _damageDelay);
     }
 
     private void DamageComplete()
     {
-        _spriteEnemy.color = new Color(1f, 1f, 1f, 1f);
+        _spriteEnemy.color = _defaulColorSprite;
     }
 
     private void OnDied()
