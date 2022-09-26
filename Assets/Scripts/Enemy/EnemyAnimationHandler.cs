@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator), typeof(StatePatrol), typeof(StateAttack))]
 public class EnemyAnimationHandler : MonoBehaviour
