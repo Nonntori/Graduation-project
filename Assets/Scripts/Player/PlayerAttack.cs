@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,11 +10,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform _hitPoint;
     [SerializeField] private float _hitRange = 0.5f;
     [SerializeField] private AudioSource _source;
-
-    public event UnityAction Attacked;
     
     private bool _isAttacking;
-
+    
+    public event UnityAction Attacked;
+    
     private void Start()
     {
         _movement = GetComponent<PlayerMovement>();
