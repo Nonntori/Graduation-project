@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Collider2D),typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
