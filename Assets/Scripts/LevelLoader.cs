@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private string _nextLevelName;
-    
     private const string StartTransition = nameof(StartTransition);
     
+    [SerializeField] private Animator _animator;
+    [SerializeField] private string _nextLevelName;
+
     private Coroutine _loadScene;
 
     public void LoadNextLevel()
