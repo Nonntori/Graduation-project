@@ -7,9 +7,9 @@ public class GameOverMenu : Menu
     [SerializeField] private Player _player;
     [SerializeField] private AudioSource _backgroundSound;
     [SerializeField] private string _levelName;
-    [SerializeField] private float _delayBeforeOpenLooseScreen;
+    [SerializeField] private Animator _animator;
     
-    private float _elapsedTime = 0f;
+    private Coroutine _openLooseGameScreen;
     
     private void OnEnable()
     {
@@ -34,17 +34,16 @@ public class GameOverMenu : Menu
     
     private void OnDied()
     {
-        StartCoroutine(OpenLooseGameScreen());
+        if (_openLooseGameScreen != null)
+            return;
+
+        _openLooseGameScreen = StartCoroutine(OpenLooseGameScreen());
         _backgroundSound.Stop();
     }
     
     private IEnumerator OpenLooseGameScreen()
     {
-        while (_elapsedTime < _delayBeforeOpenLooseScreen)
-        {
-            _elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0).Length);
         
         OnOpenPanel();
     }
