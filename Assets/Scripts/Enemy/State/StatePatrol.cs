@@ -5,12 +5,12 @@ public class StatePatrol : State
 {
     [SerializeField] private Transform _path;
     [SerializeField] private float _speed;
-
-    public event UnityAction Walk;
-
+    
     private Transform[] _points;
     private int _currentPoint;
-
+    
+    public event UnityAction Walk;
+    
     private void Start()
     {
         _points = new Transform[_path.childCount];
