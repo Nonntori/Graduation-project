@@ -4,12 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Player),typeof(SpriteRenderer))]
 public class PlayerAnimationHandler : MonoBehaviour
 {
+    [SerializeField] private Color _damageСolor;
+    
     private Animator _animator;
     private PlayerMovement _movement;
     private PlayerAttack _attack;
     private Player _player;
     private float _damageDeley = 0.5f;
     private SpriteRenderer _spritePlayer;
+    private Color _defaulColorSprite = new Color(1f, 1f, 1f, 1f);
     
     private void Awake()
     {
@@ -74,12 +77,12 @@ public class PlayerAnimationHandler : MonoBehaviour
     
     private void OnDamaged()
     {
-        _spritePlayer.color = new Color(1f, 0.4f, 0.4f, 1f);
+        _spritePlayer.color = _damageСolor;
         Invoke(nameof(DamageComplete), _damageDeley);
     }
 
     private void DamageComplete()
     {
-        _spritePlayer.color = new Color(1f, 1f, 1f, 1f);
+        _spritePlayer.color = _defaulColorSprite;
     }
 }
