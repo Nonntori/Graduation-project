@@ -8,11 +8,11 @@ public class StateAttack : State
     [SerializeField] private float _delay = 1f;
     [SerializeField] private Transform _hitPoint;
     [SerializeField] private float _hitRange;
-
-    public event UnityAction Attacked;
-
+    
     private float _lastAttackTime;
-
+    
+    public event UnityAction Attacked;
+    
     private void Update()
     {
         if (_lastAttackTime <= 0)
