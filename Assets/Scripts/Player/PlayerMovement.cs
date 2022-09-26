@@ -12,16 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 _velocity;
     [SerializeField] private LayerMask _layerMask;
     
-    public event UnityAction Run;
-    public event UnityAction StopMoving;
-    public event UnityAction Jumped;
-    public event UnityAction Grounded;
-    public event UnityAction DustFormJumped; 
-    
-    public float VelocityX => _targetVelocity.x;
-    public float Speed => _speed;
-    public bool Ground => _ground;
-    
     private const float minMoveDistance = 0.001f;
     private const float shellRadius = 0.01f;
     private Vector2 _targetVelocity;
@@ -31,6 +21,16 @@ public class PlayerMovement : MonoBehaviour
     private ContactFilter2D _contactFilter;
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
     private List<RaycastHit2D> _hitBufferList = new List<RaycastHit2D>(16);
+    
+    public float VelocityX => _targetVelocity.x;
+    public float Speed => _speed;
+    public bool Ground => _ground;
+    
+    public event UnityAction Run;
+    public event UnityAction StopMoving;
+    public event UnityAction Jumped;
+    public event UnityAction Grounded;
+    public event UnityAction DustFormJumped; 
     
     private void Start()
     {
